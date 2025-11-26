@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Certifications — Netz Infocom</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Swiper Carousel CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Lightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.css" />
+
+  <style>
+    .cert-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      cursor: zoom-in;
+    }
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+    .hero {
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #0b3c56, #0f5469);
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="index.html">Netz Infocom</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="products.html">Products</a>
+        <a href="certifications.html" class="active btn btn-outline">Certifications</a>
+        <a href="careers.html" class="active">Careers</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="mobile-btn">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="reveal-up">Our Certifications</h1>
+    <p class="reveal-up" style="max-width:600px;margin:auto;margin-top:12px;font-size:18px;opacity:0.9;">
+      Trusted, verified & government-approved certifications ensuring our quality and reliability.
+    </p>
+  </section>
+
+  <!-- CERTIFICATION CAROUSEL -->
+  <main class="container section">
+
+    <div class="swiper certSwiper" style="padding:40px 0;">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <a href="assets/certification/Certification 1.webp" class="cert-link">
+            <img src="assets/certification/Certification 1.webp" class="cert-img">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="assets/certification/Certification 2.webp" class="cert-link">
+            <img src="assets/certification/Certification 2.webp" class="cert-img">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="assets/certification/Certification 3.webp" class="cert-link">
+            <img src="assets/certification/Certification 3.webp" class="cert-img">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="assets/certification/Certification 4.webp" class="cert-link">
+            <img src="assets/certification/Certification 4.webp" class="cert-img">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="assets/certification/Certification 5.webp" class="cert-link">
+            <img src="assets/certification/Certification 5.webp" class="cert-img">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="assets/certification/Certification 6.webp" class="cert-link">
+            <img src="assets/certification/Certification 6.webp" class="cert-img">
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Navigation -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Netz Infocom</strong>
+        <p class="muted">Turnkey fiber & IT solutions</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="certifications.html">Certifications</a>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p class="muted">netzinfocom@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Netz Infocom</div>
+  </footer>
+
+  <!-- Swiper & Lightbox -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.jquery.min.js"></script>
+
+  <!-- GSAP for other reveals -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Main animation + initialization -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Initialize the carousel & lightbox (certifications page specific)
+    var swiper = new Swiper(".certSwiper", {
+      slidesPerView: 3,
+      spaceBetween: 25,
+      loop: true,
+      autoplay: { delay: 2400, disableOnInteraction: false },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      breakpoints: {
+        0: { slidesPerView: 1 },
+        600: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+
+    var lightbox = $('.cert-link').simpleLightbox({
+      widthRatio: 1,
+      heightRatio: 1,
+      scaleImageToRatio: true,
+      showCounter: false,
+    });
+
+    // small reveal for the carousel container
+    gsap.from('.certSwiper', {
+      opacity: 0,
+      y: 30,
+      duration: 0.9,
+      scrollTrigger: { trigger: '.certSwiper', start: 'top 90%' }
+    });
+  </script>
+</body>
+</html>
