@@ -1,47 +1,39 @@
-// main.js — small interactions and scroll reveal
+// main.js — interactions, navbar, scroll reveal, dark mode, fiber animation
 document.addEventListener('DOMContentLoaded', function () {
-  // Mobile toggle
-  const mobileBtn = document.getElementById('mobileBtn') || document.getElementById('mobileBtn2') || document.getElementById('mobileBtn3') || document.getElementById('mobileBtn4') || document.getElementById('mobileBtn5') || document.getElementById('mobileBtn6');
+
+  /* MOBILE NAVBAR TOGGLE */
+  const mobileBtn = document.getElementById('mobileBtn');
   const navLinks = document.querySelector('.nav-links');
   if (mobileBtn && navLinks) {
-    mobileBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
+    mobileBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
   }
 
-  // Smooth scroll for anchor links
+  /* SMOOTH SCROLL */
   document.querySelectorAll('a[href^="#"], a[href$=".html"]').forEach(a => {
     a.addEventListener('click', (e) => {
-      // default behaviour for page links retained (so site navigation works)
-      // for same-page anchors, enable smooth scroll:
       const href = a.getAttribute('href');
       if (href && href.startsWith('#')) {
         e.preventDefault();
         document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        navLinks?.classList.remove('open');
       }
     });
   });
 
-  // Scroll reveal using IntersectionObserver
+  /* SCROLL REVEAL */
   const revealEls = document.querySelectorAll('.reveal-up');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.12 });
-
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+  }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // Contact form simple client-side feedback (no backend)
+  /* CONTACT FORM FEEDBACK (client-side) */
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const msg = document.getElementById('formMsg');
       msg.textContent = 'Sending message...';
-      // fake delay
       setTimeout(() => {
         msg.textContent = 'Thanks — message queued. We will contact you shortly.';
         contactForm.reset();
@@ -49,19 +41,55 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // tiny parallax-like hero tilt on mouse move (desktop)
-  const heroVisual = document.querySelector('.hero-visual');
-  if (heroVisual && window.innerWidth > 900) {
-    heroVisual.addEventListener('mousemove', (e) => {
-      const r = heroVisual.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width;
-      const y = (e.clientY - r.top) / r.height;
-      const tx = (x - 0.5) * 12;
-      const ty = (y - 0.5) * 12;
-      heroVisual.style.transform = `translate(${tx}px, ${ty}px) rotate(${tx/8}deg)`;
-    });
-    heroVisual.addEventListener('mouseleave', () => {
-      heroVisual.style.transform = '';
-    });
+  /* FIBER CANVAS ANIMATION */
+  const canvas = document.getElementById('fiberCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const fibers = [];
+    for (let i = 0; i < 70; i++) {
+      fibers.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        length: 80 + Math.random() * 160,
+        speed: 0.6 + Math.random() * 1.8,
+        alpha: 0.08 + Math.random() * 0.32
+      });
+    }
+    (function drawFibers(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      fibers.forEach(f => {
+        const grad = ctx.createLinearGradient(f.x, f.y, f.x + f.length, f.y);
+        grad.addColorStop(0, `rgba(8,164,167,${f.alpha})`);
+        grad.addColorStop(0.8, `rgba(255,255,255,0.02)`);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(f.x, f.y);
+        ctx.lineTo(f.x + f.length, f.y);
+        ctx.stroke();
+        f.x += f.speed;
+        if (f.x > canvas.width + f.length) { f.x = -f.length; f.y = Math.random() * canvas.height; }
+      });
+      requestAnimationFrame(drawFibers);
+    })();
   }
+
+  /* DARK MODE TOGGLE */
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme','dark'); themeBtn.textContent = '☀ Light';
+      } else { localStorage.setItem('theme','light'); themeBtn.textContent = '🌙 Dark'; }
+    });
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark'); themeBtn.textContent = '☀ Light';
+    } else { themeBtn.textContent = '🌙 Dark'; }
+  }
+
 });
