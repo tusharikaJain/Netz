@@ -457,3 +457,40 @@ body.dark .client-carousel img { filter: brightness(0.94); }
     padding: 14px 16px;
   }
 }
+
+
+/* Certificates Section Background */
+.certificates-section {
+  background: linear-gradient(140deg, #0d3b66, #08a4a7);
+  padding: 60px 0;
+}
+/* Remove extra spacing on certificates page */
+.certificates-section {
+  padding: 0;
+}
+
+.certificates-section .section {
+  padding: 20px 0; /* small clean space instead of huge padding */
+}
+
+/* Remove footer gap only for certificates page */
+.certificates-section + .footer {
+  margin-top: 0 !important;
+}
+/* Certificates page background (LIGHT MODE) */
+.certificates-section {
+  background: #ffffff;   /* pure white */
+  padding: 40px 0;
+}
+
+/* LIGHT MODE clean backdrop behind certificates */
+.certificates-section .section {
+  background: transparent;
+  padding: 20px 0;
+}
+
+/* DARK MODE — keep gradient */
+body.dark .certificates-section {
+  background: linear-gradient(140deg, #0d3b66, #08a4a7);
+}
+
