@@ -1,66 +1,83 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Services — Netz Infocom</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="logo" href="index.html">Netz Infocom</a>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html" class="active">Services</a>
-        <a href="industries.html">Industries</a>
-        <a href="products.html">Products</a>
-        <a href="certifications.html">Certifications</a>
-        <a href="careers.html" class="active">Careers</a>
-        <a href="contact.html" class="btn btn-outline">Contact</a>
-      </nav>
-      <button id="mobileBtn3" class="mobile-btn">☰</button>
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="index.html"><img src="assets\netz-logo-dark.webp" class="logo-img" alt="">Netz Infocom</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="products.html">Products</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="btn btn-outline">Contact</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+    <button id="mobileBtn" class="mobile-btn">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1>Our Services</h1>
+  <p>Turnkey OFC installation, maintenance, and dark fiber solutions.</p>
+</section>
+
+<section class="section container">
+  <h2 class="section-title reveal-up">Core Services</h2>
+  <div class="grid-3">
+    <article class="card reveal-up">
+      <h3>OFC Installation</h3>
+      <p class="muted">HDD, trenching, cable blowing, splicing and testing.</p>
+    </article>
+    <article class="card reveal-up delay-1">
+      <h3>Maintenance & Support</h3>
+      <p class="muted">24/7 fault detection, splicing and reroutes.</p>
+    </article>
+    <article class="card reveal-up delay-2">
+      <h3>Dark Fiber Leasing</h3>
+      <p class="muted">SLA-based leasing for ISPs and enterprises.</p>
+    </article>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-wrapper">
+
+    <div class="footer-left">
+      <h3>Netz Infocom</h3>
+      <p class="muted small">Turnkey optical fiber & IT solutions.</p>
     </div>
-  </header>
 
-  <main class="container section">
-    <h1 class="reveal-up">Our Services</h1>
-
-    <div class="grid-3 mt-10">
-      <article class="card reveal-up">
-        <h3>OFC Installation</h3>
-        <p class="muted">Design, HDD & trenching, duct laying, cable blowing, jointing and OTDR testing.</p>
-      </article>
-
-      <article class="card reveal-up delay-1">
-        <h3>OFC Maintenance</h3>
-        <p class="muted">Rapid fault detection, splicing & restoration, scheduled route maintenance.</p>
-      </article>
-
-      <article class="card reveal-up delay-2">
-        <h3>Dark Fiber Leasing</h3>
-        <p class="muted">SLA-backed dark fiber routes and dedicated connectivity for enterprises and ISPs.</p>
-      </article>
+    <div class="footer-middle">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="industries.html">Industries</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
 
-    <section class="mt-16">
-      <div class="card reveal-up">
-        <h3>RailTel Partnership</h3>
-        <p class="muted">We are a channel partner for RailTel — assisting in bandwidth provisioning and last-mile setups.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div><strong>Netz Infocom</strong><p class="muted">Turnkey fiber solutions</p></div>
-      <div class="footer-links"><a href="index.html">Home</a> <a href="contact.html">Contact</a></div>
-      <div><strong>Contact</strong><p class="muted">info@netzinfocom.com</p></div>
+    <div class="footer-right">
+      <p class="muted">info@netzinfocom.com</p>
+      <p class="muted">+91 98765 43210</p>
     </div>
-    <div class="footer-bottom">© 2025 Netz Infocom</div>
-  </footer>
 
-  <script src="assets/js/main.js"></script>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Netz Infocom. All rights reserved.
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
